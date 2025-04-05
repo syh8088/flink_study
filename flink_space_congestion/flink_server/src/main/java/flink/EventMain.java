@@ -1,7 +1,6 @@
 package flink;
 
 import flink.records.SpaceCongestionEvent;
-import flink.records.SpaceCongestionEventStatisticsSerializationSchema;
 import org.apache.flink.api.java.utils.ParameterTool;
 import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.ProducerConfig;

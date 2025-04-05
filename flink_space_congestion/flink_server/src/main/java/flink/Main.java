@@ -68,7 +68,7 @@ public class Main {
         WatermarkStrategy<SpaceCongestionEvent> watermarkStrategy = WatermarkStrategy
                 .<SpaceCongestionEvent>forBoundedOutOfOrderness(Duration.ofMillis(200))
                 .withIdleness(Duration.ofSeconds(5))
-                .withTimestampAssigner((clickEvent, l) -> clickEvent.getTimestamp().getTime());
+                .withTimestampAssigner((spaceCongestionEvent, l) -> spaceCongestionEvent.getTimestamp().getTime());
 
         DataStream<SpaceCongestionEvent> clicks = env.fromSource(source, watermarkStrategy, "SpaceCongestionEvent Source");
 
@@ -85,18 +85,18 @@ public class Main {
                 )
                 .name("SpaceCongestionEvent");
 
-        statistics.sinkTo(
-                        KafkaSink.<SpaceCongestionEventStatistics>builder()
-                                .setBootstrapServers(kafkaProps.getProperty(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG))
-                                .setKafkaProducerConfig(kafkaProps)
-                                .setRecordSerializer(
-                                        KafkaRecordSerializationSchema.builder()
-                                                .setTopic(outputTopic)
-                                                .setValueSerializationSchema(new SpaceCongestionEventStatisticsSerializationSchema())
-                                                .build())
-                                .setDeliverGuarantee(DeliveryGuarantee.AT_LEAST_ONCE)
-                                .build())
-                .name("SpaceCongestionEventStatistics Kafka Sink");
+//        statistics.sinkTo(
+//                        KafkaSink.<SpaceCongestionEventStatistics>builder()
+//                                .setBootstrapServers(kafkaProps.getProperty(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG))
+//                                .setKafkaProducerConfig(kafkaProps)
+//                                .setRecordSerializer(
+//                                        KafkaRecordSerializationSchema.builder()
+//                                                .setTopic(outputTopic)
+//                                                .setValueSerializationSchema(new SpaceCongestionEventStatisticsSerializationSchema())
+//                                                .build())
+//                                .setDeliverGuarantee(DeliveryGuarantee.AT_LEAST_ONCE)
+//                                .build())
+//                .name("SpaceCongestionEventStatistics Kafka Sink");
 
         statistics.addSink(
                         JdbcSink.sink(
