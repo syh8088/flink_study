@@ -85,19 +85,6 @@ public class Main {
                 )
                 .name("SpaceCongestionEvent");
 
-//        statistics.sinkTo(
-//                        KafkaSink.<SpaceCongestionEventStatistics>builder()
-//                                .setBootstrapServers(kafkaProps.getProperty(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG))
-//                                .setKafkaProducerConfig(kafkaProps)
-//                                .setRecordSerializer(
-//                                        KafkaRecordSerializationSchema.builder()
-//                                                .setTopic(outputTopic)
-//                                                .setValueSerializationSchema(new SpaceCongestionEventStatisticsSerializationSchema())
-//                                                .build())
-//                                .setDeliverGuarantee(DeliveryGuarantee.AT_LEAST_ONCE)
-//                                .build())
-//                .name("SpaceCongestionEventStatistics Kafka Sink");
-
         statistics.addSink(
                         JdbcSink.sink(
                                 "INSERT INTO space_congestion_event_report (window_start, window_end, space_id, space_congestion) VALUES (?, ?, ?, ?)",
