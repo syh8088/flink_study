@@ -13,7 +13,7 @@
 
 ### Service Endpoint
 
-- flink-service
+- Flink 웹 대시보드
     - http://localhost:8081
 
 - Mysql
