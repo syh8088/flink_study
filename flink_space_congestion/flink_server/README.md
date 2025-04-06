@@ -3,7 +3,7 @@
 ## 로컬 환경 실행 방법
 
 ### Skill & Tools - Backend
-- Flink
+- Flink 1.16.3
 - Java 11
 - Mysql 8.x
 - docker
