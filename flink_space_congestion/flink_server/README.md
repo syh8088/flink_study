@@ -136,3 +136,5 @@ ex> ./flink run -d /home/syh8088/flink_space_congestion.jar --bootstrap.servers 
 
 #### Flink 이용해서 실시간 데이터 스트림 처리 해보기 - 실시간 CCTV 혼잡도 구하기 결과 (Mysql DB 서버 적재)
 ![Flink 이용해서 실시간 데이터 스트림 처리 해보기 - 실시간 CCTV 혼잡도 구하기 결과 (Mysql DB 서버 적재)](./md_resource/Mysql_Sink.png)
+
+`space_congestion` 스키마에서 `space_congestion_event_report` 테이블을 확인 합니다. 
