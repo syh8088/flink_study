@@ -27,6 +27,18 @@
 - kafka-ui
     - http://localhost:8989
 
+
+#### 자바 11 설치 하기
+`Flink` 를 실행하기 위해서는 우선 자바 11 버전으로 설치 해야 합니다.
+
+```markdown
+sudo apt update
+sudo apt install openjdk-11-jdk
+java -version
+```
+
+해당 명령어를 통해 자바를 우선 설치 합니다.
+
 #### 로컬에서 Flink 설치 및 Flink Cluster 실행 하기
 https://archive.apache.org/dist/flink/flink-1.16.3/
 
